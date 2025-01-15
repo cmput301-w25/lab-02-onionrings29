@@ -77,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newCity = textInputEditText.getText() != null ? textInputEditText.getText().toString() : "";
-                dataList.add(newCity);
-                cityAdapter.notifyDataSetChanged();
+                if (!newCity.isEmpty()) {
+                    dataList.add(newCity);
+                    cityAdapter.notifyDataSetChanged();
+                }
             }
         });
 

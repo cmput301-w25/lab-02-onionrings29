@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Removed: " + removedCity, Toast.LENGTH_SHORT).show();
         });
 
-        //test
+
         // add city to the list
         button.setOnClickListener(v -> {
             String newCity = textInputEditText.getText() != null ? textInputEditText.getText().toString() : "";

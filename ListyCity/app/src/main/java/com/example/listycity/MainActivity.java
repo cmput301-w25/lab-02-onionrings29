@@ -1,8 +1,6 @@
 package com.example.listycity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -58,29 +56,24 @@ public class MainActivity extends AppCompatActivity {
         cityList.setAdapter(cityAdapter);
 
         //removes city from the list
-        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Remove the clicked city from the list
-                String removedCity = dataList.remove(position);
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+            // Remove the clicked city from the list
+            String removedCity = dataList.remove(position);
 
-                // Notify the adapter that the data has changed
-                cityAdapter.notifyDataSetChanged();
+            // Notify the adapter that the data has changed
+            cityAdapter.notifyDataSetChanged();
 
-                // Show a toast confirming the removal
-                Toast.makeText(MainActivity.this, "Removed: " + removedCity, Toast.LENGTH_SHORT).show();
-            }
+            // Show a toast confirming the removal
+            Toast.makeText(MainActivity.this, "Removed: " + removedCity, Toast.LENGTH_SHORT).show();
         });
 
+        //test
         // add city to the list
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newCity = textInputEditText.getText() != null ? textInputEditText.getText().toString() : "";
-                if (!newCity.isEmpty()) {
-                    dataList.add(newCity);
-                    cityAdapter.notifyDataSetChanged();
-                }
+        button.setOnClickListener(v -> {
+            String newCity = textInputEditText.getText() != null ? textInputEditText.getText().toString() : "";
+            if (!newCity.isEmpty()) {
+                dataList.add(newCity);
+                cityAdapter.notifyDataSetChanged();
             }
         });
 
